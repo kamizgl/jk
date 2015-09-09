@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"  
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"       
+	xmlns:p="http://www.springframework.org/schema/p"  
+	xmlns:context="http://www.springframework.org/schema/context"   
+	xmlns:tx="http://www.springframework.org/schema/tx"  
+	xmlns:aop="http://www.springframework.org/schema/aop"  
+	xsi:schemaLocation="http://www.springframework.org/schema/beans    
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd    
+	http://www.springframework.org/schema/aop    
+	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd    
+	http://www.springframework.org/schema/tx    
+	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd    
+	http://www.springframework.org/schema/context    
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd">  
+
+	<!--1.DataSource    C3P0  -->	
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<property name="jdbcUrl" value="jdbc:mysql:///jk0505" />
+		<property name="user" value="root" />
+		<property name="password" value="123" />
+	</bean>	
+	<!--2.SessionFactory-->
+		<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
+		p:dataSource-ref="dataSource"  
+        p:configLocation="classpath:hibernate.cfg.xml" />
+	<!--3.事务管理器-->
+	<bean id="transactionManager"
+        class="org.springframework.orm.hibernate3.HibernateTransactionManager"
+        p:sessionFactory-ref="sessionFactory" />
+	<!--4.事务通知--><tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="save*" propagation="REQUIRED"/>
+			<tx:method name="insert*" propagation="REQUIRED"/>
+			<tx:method name="update*" propagation="REQUIRED"/>
+			<tx:method name="delete*" propagation="REQUIRED"/>
+			
+			<tx:method name="get*" read-only="true"/>
+			<tx:method name="*" read-only="true"/>
+		</tx:attributes>
+		</tx:advice>
+
+	<!--5.AOP组装事务通知与切面-->
+	<aop:config>
+		<aop:pointcut id="pointcut" expression="execution(* cn.itcast.jk.service.*.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut" />
+	</aop:config>
+	
+	
+	<!--BaseDao配置-->
+	<bean id="baseDao" class="cn.itcast.jk.dao.impl.BaseDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	
+	<!--引入其它spring配置文件-->
+	<import resource="spring/applicationContext-action.xml"></import>			
+	<import resource="spring/applicationContext-service.xml"></import>			
+</beans>
