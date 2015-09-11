@@ -62,4 +62,7 @@ public class DeptAction extends BaseAction implements ModelDriven<Dept> {
 		return "plist";
 	}
 	
+	public String tocreate() throws Exception {
+		return "tocreate";
+	}
 }
