@@ -7,6 +7,7 @@ import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
@@ -52,6 +53,14 @@ public class BaseAction extends ActionSupport implements RequestAware, SessionAw
 	@Override
 	public void setApplication(Map<String, Object> application) {
 		this.application = application;
+	}
+	
+	public void put(String key,Object value) {
+		ActionContext.getContext().put(key, value);
+	}
+	
+	public void push(Object obj) {
+		ActionContext.getContext().getValueStack().push(obj);
 	}
 
 }

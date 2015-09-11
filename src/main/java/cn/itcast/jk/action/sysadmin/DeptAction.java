@@ -58,11 +58,19 @@ public class DeptAction extends BaseAction implements ModelDriven<Dept> {
 	public String list() throws Exception {
 		page = deptService.findPage("from Dept", page, Dept.class, null);
 		page.setUrl(ServletActionContext.getRequest().getContextPath()+"/sysadmin/deptAction_list");//不要加？号，原因是所有的参数都在Page组件中
-		ActionContext.getContext().put("page", page);//放在context区域 
+		put("page", page);//放在context区域 
 		return "plist";
 	}
 	
+	public String toview() throws Exception{
+		Dept dept = deptService.get(Dept.class, model.getId());
+		push(dept);
+		return "view";
+	}
+	
+	
 	public String tocreate() throws Exception {
+		
 		return "tocreate";
 	}
 }
