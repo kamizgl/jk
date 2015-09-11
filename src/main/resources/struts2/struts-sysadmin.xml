@@ -10,6 +10,7 @@
 			<result name="plist">/WEB-INF/pages/sysadmin/dept/jDeptList.jsp</result>
 			<result name="view">/WEB-INF/pages/sysadmin/dept/jDeptView.jsp</result>
 			<result name="tocreate">/WEB-INF/pages/sysadmin/dept/jDeptCreate.jsp</result>
+			<result name="toinsert" type="redirectAction">deptAction_list</result>
 		</action>
 	</package>
 	

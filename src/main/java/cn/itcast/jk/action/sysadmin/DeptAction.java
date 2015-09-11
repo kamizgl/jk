@@ -3,6 +3,8 @@
  */
 package cn.itcast.jk.action.sysadmin;
 
+import java.util.List;
+
 import org.apache.struts2.ServletActionContext;
 
 import cn.itcast.jk.action.BaseAction;
@@ -70,7 +72,15 @@ public class DeptAction extends BaseAction implements ModelDriven<Dept> {
 	
 	
 	public String tocreate() throws Exception {
-		
+		List<Dept> dept = deptService.find("from Dept", Dept.class, null);
+		put("deptList",dept);
 		return "tocreate";
 	}
+	public String insert() throws Exception{
+//		String deptName = model.getDeptName();
+//		String id = model.getParentDept().getId();
+		deptService.saveOrUpdate(model);
+		return "toinsert";
+	}
+	
 }
