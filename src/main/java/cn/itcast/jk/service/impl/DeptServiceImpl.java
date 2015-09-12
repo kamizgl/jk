@@ -53,6 +53,14 @@ public class DeptServiceImpl implements DeptService {
 
 
 	public void deleteById(Class<Dept> entityClass, Serializable id) {
+		List<Dept> deptList = baseDao.find("from Dept o where o.parentDept.id=?", entityClass, new Object[] {id});
+		
+		if(deptList.isEmpty()==false&&deptList!=null) {
+			for(Dept d:deptList) {
+				deleteById(entityClass, d.getId());
+			}
+			
+		}
 		baseDao.deleteById(entityClass, id);
 
 	}

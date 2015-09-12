@@ -70,17 +70,32 @@ public class DeptAction extends BaseAction implements ModelDriven<Dept> {
 		return "view";
 	}
 	
-	
 	public String tocreate() throws Exception {
 		List<Dept> dept = deptService.find("from Dept", Dept.class, null);
 		put("deptList",dept);
 		return "tocreate";
 	}
+	
 	public String insert() throws Exception{
-//		String deptName = model.getDeptName();
-//		String id = model.getParentDept().getId();
+		if("".equals(model.getParentDept().getId())) {
+			model.setParentDept(null);
+		}
 		deptService.saveOrUpdate(model);
 		return "toinsert";
 	}
 	
+	public String toupdate() throws Exception{
+		String id = model.getId();
+		Dept dept = deptService.get(Dept.class, id);
+		push(dept);
+		List<Dept> deptList = deptService.find("from Dept", Dept.class, null);
+		put("deptList",deptList);
+		return "toupdate";
+	}
+	
+	public String delete() throws Exception{
+		String id = model.getId();
+		deptService.deleteById(Dept.class, id);
+		return "delete";
+	}
 }
