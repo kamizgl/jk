@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.itcast.jk.domain">
+	<class name="User" table="USER_P">
+		<id name="id" column="USER_ID">
+			<generator class="uuid"></generator>
+		</id>
+		<property name="userName" column="USER_NAME"></property>
+		<property name="password" column="PASSWORD"></property>
+		<property name="state" column="STATE"></property>
+		<property name="createBy" column="CREATE_BY"></property>
+		<property name="createDept" column="CREATE_DEPT"></property>
+		<property name="createTime" column="CREATE_TIME"></property>
+		<property name="updateBy" column="UPDATE_BY"></property>
+		<property name="updateTime" column="UPDATE_TIME"></property>
+		
+		<set name="roles" table="ROLE_USER_P">
+			<key column="USER_ID"></key>
+			<many-to-many class="Role" column="ROLE_ID"></many-to-many>
+		</set>
+		<many-to-one name="dept" column="DEPT_ID" class="Dept"></many-to-one>
+		<one-to-one name="userinfo" class="Userinfo" cascade="all"></one-to-one>
+	</class>
+
+</hibernate-mapping>
