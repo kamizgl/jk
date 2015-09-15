@@ -42,7 +42,7 @@
 <div style="text-align:left">
 	<c:forEach items="${roleList}" var="o">
 		<span style="padding:3px;">
-		<input type="checkbox" name="roleIds" value="${o.id}" class="input"
+		<input type="checkbox" name="roleids" value="${o.id}" class="input"
 			<c:if test="${fn:contains(userRoleStr,o.id)}">checked</c:if>
 		>
 		${o.name}

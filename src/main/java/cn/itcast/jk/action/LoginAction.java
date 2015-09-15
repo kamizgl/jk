@@ -1,6 +1,16 @@
 package cn.itcast.jk.action;
 
+import java.util.Set;
+
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
+
 import cn.itcast.common.SysConstant;
+import cn.itcast.jk.domain.Module;
+import cn.itcast.jk.domain.Role;
+import cn.itcast.jk.domain.User;
+import cn.itcast.util.UtilFuns;
 
 /**
  * @Description: 登录和退出类
@@ -12,7 +22,7 @@ public class LoginAction extends BaseAction {
 
 	private static final long serialVersionUID = 1L;
 
-	private String username;
+	private String userName;
 	private String password;
 
 
@@ -34,6 +44,35 @@ public class LoginAction extends BaseAction {
 //		}
 //		return "login";
 		
+		
+		if(UtilFuns.isEmpty(userName)) {
+			return "login";
+		}try {
+			//1得到Subject
+			Subject subject=SecurityUtils.getSubject();
+			//2.调用login()方法，实现登陆功能，此时将自动AuthRealm.doGetAuthenticationInfo()来实现登录的判断
+		
+			UsernamePasswordToken token = new UsernamePasswordToken(userName,password);
+			subject.login(token);
+			//3.从realm得到用户信息
+			User user =(User) subject.getPrincipal();
+			//4.为了加载当前这个用户的相关数据（角色，权限），使用即时加载方式 
+			System.out.println(user.getDept().getDeptName());
+			Set<Role> roles = user.getRoles();
+			for(Role role :roles){
+				Set<Module> modules = role.getModules();
+				for(Module m :modules){
+					System.out.println(m.getCpermission());
+				}
+			}
+		//5将用户信息存入session中
+			session.put(SysConstant.CURRENT_USER_INFO, user);
+		}
+		catch(Exception e) {
+			super.put("errorInfo", "用户名密码错误，请重新登陆");
+			e.printStackTrace();
+			return LOGIN;
+		}
 		return SUCCESS;
 	}
 	
@@ -45,12 +84,12 @@ public class LoginAction extends BaseAction {
 		return "logout";
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserName(String username) {
+		this.userName = username;
 	}
 
 	public String getPassword() {

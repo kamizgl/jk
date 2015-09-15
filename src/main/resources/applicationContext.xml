@@ -27,6 +27,10 @@
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
 		p:dataSource-ref="dataSource"  
         p:configLocation="classpath:hibernate.cfg.xml" />
+
+	<!--代表产生代理的方式为cglib -->
+	<aop:aspectj-autoproxy proxy-target-class="true" />	
+        
 	<!--3.事务管理器-->
 	<bean id="transactionManager"
         class="org.springframework.orm.hibernate3.HibernateTransactionManager"
@@ -55,7 +59,9 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>	
 	
+	
 	<!--引入其它spring配置文件-->
 	<import resource="spring/applicationContext-action.xml"></import>			
 	<import resource="spring/applicationContext-service.xml"></import>			
+	<import resource="spring/applicationContext-shiro.xml"></import>
 </beans>

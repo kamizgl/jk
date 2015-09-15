@@ -22,4 +22,17 @@
 	<bean id="deptAction" class="cn.itcast.jk.action.sysadmin.DeptAction" scope="prototype">
 		<property name="deptService" ref="deptService"></property>
 	</bean>
+	
+	<!--UserAction配置-->
+	<bean id="userAction" class="cn.itcast.jk.action.sysadmin.UserAction"  scope="prototype">
+		<property name="userService" ref="userService"></property>
+		<property name="deptService" ref="deptService"></property> 
+ 		<property name="roleService" ref="roleService"></property> 
+	</bean>
+	<!--roleAction配置-->
+	<bean id="roleAction" class="cn.itcast.jk.action.sysadmin.RoleAction"  scope="prototype">
+		<property name="roleService" ref="roleService"></property>
+		<property name="moduleService" ref="moduleService"></property>
+	</bean>
+	
 </beans>

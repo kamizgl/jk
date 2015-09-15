@@ -3,6 +3,8 @@
  */
 package cn.itcast.jk.domain;
 
+import java.util.Set;
+
 /**
  * @description:部门实体
  * @author 传智.宋江
@@ -10,7 +12,7 @@ package cn.itcast.jk.domain;
  * @version 1.0
  */
 public class Dept {
-	
+	private Set<User> users;
 	private Dept parentDept;	//自关联  多个子部门可以对应同一个父部门
 	private String id;			//编号
 	private String deptName;	//部门名称
@@ -39,6 +41,12 @@ public class Dept {
 	}
 	public void setState(Integer state) {
 		this.state = state;
+	}
+	public Set<User> getUsers() {
+		return users;
+	}
+	public void setUsers(Set<User> users) {
+		this.users = users;
 	}
 	
 }

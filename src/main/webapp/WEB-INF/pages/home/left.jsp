@@ -47,11 +47,12 @@
 	       <div class="panel-header">
 	        <div class="panel-title">个人工作台</div>
 	        <div class="panel-content">
-				<ul>
-					<li><a href="${ctx}/tomain.action?modelName=home" target="main" id="aa_3" onclick="linkHighlighted(this)">我的留言板</a></li>
-					<li><a href="${ctx}/home/workflow/tasklist.action" target="main" id="aa_2" onclick="linkHighlighted(this)">我的代办任务</a></li>
-					<li><a href="${ctx}/baseinfo/leavebill/list.action" target="main" id="aa_1" onclick="linkHighlighted(this)">请假单管理</a></li>
-				</ul>
+<!-- 				<ul> -->
+<%-- 					<li><a href="${ctx}/tomain.action?modelName=home" target="main" id="aa_3" onclick="linkHighlighted(this)">我的留言板</a></li> --%>
+<%-- 					<li><a href="${ctx}/home/workflow/tasklist.action" target="main" id="aa_2" onclick="linkHighlighted(this)">我的代办任务</a></li> --%>
+<%-- 					<li><a href="${ctx}/baseinfo/leavebill/list.action" target="main" id="aa_1" onclick="linkHighlighted(this)">请假单管理</a></li> --%>
+<!-- 				</ul> -->
+			<%@include file="../leftmenu.jsp" %>
 	        </div>
 	        
 	       </div>

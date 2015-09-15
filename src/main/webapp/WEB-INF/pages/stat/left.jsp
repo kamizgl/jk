@@ -33,11 +33,12 @@
         </div>
         
         <div class="panel-content">
-			<ul>
-				<li><a href="${ctx}/stat/statChartAction_factorySale" onclick="linkHighlighted(this)" target="main" id="aa_1">生产厂家销售情况</a></li>
-				<li><a href="${ctx}/stat/statChartAction_productSale" onclick="linkHighlighted(this)" target="main" id="aa_1">产品销售排行</a></li>
-				<li><a href="${ctx}/stat/statChartAction_onlineInfo" onclick="linkHighlighted(this)" target="main" id="aa_1">系统访问压力图</a></li>					
-			</ul>
+<!-- 			<ul> -->
+<%-- 				<li><a href="${ctx}/stat/statChartAction_factorySale" onclick="linkHighlighted(this)" target="main" id="aa_1">生产厂家销售情况</a></li> --%>
+<%-- 				<li><a href="${ctx}/stat/statChartAction_productSale" onclick="linkHighlighted(this)" target="main" id="aa_1">产品销售排行</a></li> --%>
+<%-- 				<li><a href="${ctx}/stat/statChartAction_onlineInfo" onclick="linkHighlighted(this)" target="main" id="aa_1">系统访问压力图</a></li>					 --%>
+<!-- 			</ul> -->
+		<%@include file="../leftmenu.jsp" %>
         </div>
     </div>
     </div>
