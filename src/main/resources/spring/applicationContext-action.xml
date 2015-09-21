@@ -34,5 +34,25 @@
 		<property name="roleService" ref="roleService"></property>
 		<property name="moduleService" ref="moduleService"></property>
 	</bean>
-	
+	<!-- ContractAction 配置-->
+	<bean id="contractAction" class="cn.itcast.jk.action.cargo.ContractAction">
+		<property name="contractService" ref="contractService"></property>
+	</bean>
+	<bean id="contractProductAction" class="cn.itcast.jk.action.cargo.ContractProductAction">
+		<property name="contractProductService" ref="contractProductService"></property>
+		<property name="factoryService" ref="factoryService"></property>
+		<property name="contractService" ref="contractService"></property>
+	</bean>
+	<bean id="extCproductAction" class="cn.itcast.jk.action.cargo.ExtCproductAction">
+		<property name="contractService" ref="contractService"></property>
+		<property name="extCproductService" ref="extCproductService"></property>
+		<property name="factoryService" ref="factoryService"></property>
+	</bean>
+	<bean id="outProductAction" class="cn.itcast.jk.action.cargo.outProductAction">
+		<property name="contractProductService" ref="contractProductService"></property>
+	</bean>
+	<bean id="exportAction" class="cn.itcast.jk.action.cargo.ExportAction">
+		<property name="contractService" ref="contractService"></property>
+		<property name="exportService" ref="exportService"></property>
+	</bean>
 </beans>

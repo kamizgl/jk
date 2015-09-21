@@ -8,8 +8,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
+import com.mysql.jdbc.Util;
+
 import cn.itcast.common.SysConstant;
 import cn.itcast.jk.dao.BaseDao;
+import cn.itcast.jk.domain.Contract;
 import cn.itcast.jk.domain.ContractProduct;
 import cn.itcast.jk.pagination.Page;
 import cn.itcast.jk.service.ContractProductService;
@@ -47,7 +50,31 @@ public class ContractProductServiceImpl implements ContractProductService {
 
 	@Override
 	public void saveOrUpdate(ContractProduct entity) {
+		//不是空就是更新，是空就是保存，同时需要维护表格中的总金额
 	
+		if(UtilFuns.isEmpty(entity.getId())) {
+			double amout = 0;//总金额
+			if(UtilFuns.isNotEmpty(entity.getCnumber())&& UtilFuns.isNotEmpty(entity.getPrice())) {
+				amout = entity.getCnumber()* entity.getPrice();//货物总金额 
+				entity.setAmount(amout);
+			}	
+			
+			Contract contract = baseDao.get(Contract.class, entity.getContract().getId());//找到购销合同
+			contract.setTotalAmount(contract.getTotalAmount()+amout);
+			baseDao.saveOrUpdate(contract);
+		}else {
+			double amout = 0;
+			double oldprice = entity.getAmount()==null?0:entity.getAmount();//这个货物的原有总金额
+			if(UtilFuns.isNotEmpty(entity.getCnumber()) && UtilFuns.isNotEmpty(entity.getPrice())){
+				amout = entity.getCnumber()* entity.getPrice();//货物总金额 
+				entity.setAmount(amout);
+			}
+			
+			//更新购销合同的总金额
+			Contract contract = baseDao.get(Contract.class, entity.getContract().getId());//找到购销合同
+			contract.setTotalAmount(contract.getTotalAmount()-oldprice+amout);
+			baseDao.saveOrUpdate(contract);
+		}
 		baseDao.saveOrUpdate(entity);
 	}
 

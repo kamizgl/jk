@@ -42,7 +42,7 @@
 	            <td class="tableContent">
 	            	 <s:select name="factory.id" list="factoryList" 
 	            				onchange="setFactoryName(this.options[this.selectedIndex].text);"
-	            				listKey="id" listValue="factoryName" 
+	            				listKey="id" listValue="factoryName" theme="simple" value=""
 	            				headerKey="" headerValue="--请选择--"/>
 	            	<input type="hidden" id="factoryName" name="factoryName" value=""/>
 	            </td>

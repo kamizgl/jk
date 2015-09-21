@@ -26,7 +26,25 @@
 	<bean id="roleService" class="cn.itcast.jk.service.impl.RoleServiceImpl">
 		<property name="baseDao" ref="baseDao"></property>
 	</bean>
+	
 	<bean id="moduleService" class="cn.itcast.jk.service.impl.ModuleServiceImpl">
 		<property name="baseDao" ref="baseDao"/>
 	</bean>
+	
+	<bean id="contractService" class="cn.itcast.jk.service.impl.ContractServiceImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	<bean id="contractProductService" class="cn.itcast.jk.service.impl.ContractProductServiceImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	<bean id="factoryService" class="cn.itcast.jk.service.impl.FactoryServiceImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	<bean id="extCproductService" class="cn.itcast.jk.service.impl.ExtCproductServiceImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	<bean id="exportService" class="cn.itcast.jk.service.impl.ExportServiceImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	
 </beans>

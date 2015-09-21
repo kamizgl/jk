@@ -18,7 +18,7 @@
 	<!--1.DataSource    C3P0  -->	
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
-		<property name="jdbcUrl" value="jdbc:mysql:///jk0505" />
+		<property name="jdbcUrl" value="jdbc:mysql:///jk" />
 		<property name="user" value="root" />
 		<property name="password" value="123" />
 	</bean>	

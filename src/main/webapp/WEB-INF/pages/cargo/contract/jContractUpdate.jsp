@@ -38,7 +38,7 @@
 		<table class="commonTable" cellspacing="1">
 	        <tr>
 	            <td class="columnTitle">客户名称：</td>
-	            <td class="tableContent"><input type="text" name="customerName" value="${customerName }"/></td>
+	            <td class="tableContent"><input type="text" name="customName" value="${customName }"/></td>
 	            <td class="columnTitle">打印版式：</td>
 	            <td class="tableContentAuto">
 	            	<input type="radio" name="printStyle" value="2" ${printStyle=='2'?"checked":"" }  class="input">两款

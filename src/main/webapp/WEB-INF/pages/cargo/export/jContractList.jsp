@@ -54,7 +54,7 @@
 	<tr class="odd" onmouseover="this.className='highlight'" onmouseout="this.className='odd'" >
 		<td><input type="checkbox" name="id" value="${o.id}"/></td>
 		<td>${status.index+1}</td>
-		<td>${o.customerName}</td>
+		<td>${o.customName}</td>
 		<td>
 			<a href="contractAction_toview?id=${o.id}">${o.contractNo}</a>
 		</td>

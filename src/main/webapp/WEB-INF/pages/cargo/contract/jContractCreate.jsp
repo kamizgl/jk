@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title></title>
-	<script type="text/javascript" src="${ctx }/js/datepicker/WdatePicker.js""></script>
+	<script type="text/javascript" src="${ctx }/js/datepicker/WdatePicker.js"></script>
 </head>
 
 <body>
@@ -37,7 +37,7 @@
 		<table class="commonTable" cellspacing="1">
 	        <tr>
 	            <td class="columnTitle">客户名称：</td>
-	            <td class="tableContent"><input type="text" name="customerName" value=""/></td>
+	            <td class="tableContent"><input type="text" name="customName" value=""/></td>
 	            <td class="columnTitle">打印版式：</td>
 	            <td class="tableContentAuto">
 	            	<input type="radio" name="printStyle" value="2" checked class="input">两款

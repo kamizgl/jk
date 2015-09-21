@@ -10,6 +10,7 @@ import java.util.UUID;
 
 import cn.itcast.common.SysConstant;
 import cn.itcast.jk.dao.BaseDao;
+import cn.itcast.jk.domain.Contract;
 import cn.itcast.jk.domain.ExtCproduct;
 import cn.itcast.jk.pagination.Page;
 import cn.itcast.jk.service.ExtCproductService;
@@ -47,8 +48,35 @@ public class ExtCproductServiceImpl implements ExtCproductService {
 
 	@Override
 	public void saveOrUpdate(ExtCproduct entity) {
-		
+		//维护价格关系
+		//判断是否是增加的
+		if(UtilFuns.isEmpty(entity.getId())) {
+			double amout = 0;
+			if(UtilFuns.isNotEmpty(entity.getCnumber()) && UtilFuns.isNotEmpty(entity.getPrice())){
+				amout = entity.getCnumber()* entity.getPrice();//货物总金额 
+				entity.setAmount(amout);
+			}
+			Contract contract = baseDao.get(Contract.class, entity.getContractProduct().getContract().getId());//找到购销合同
+			contract.setTotalAmount(contract.getTotalAmount()+amout);
+			baseDao.saveOrUpdate(contract);
+		}
+		else {
+			//不是增加的要计算，计算方法，减去之前的 加上更改过的
+			double amout = 0;
+			double oldprice = entity.getAmount()==null?0:entity.getAmount();//这个附件的原有总金额
+			if(UtilFuns.isNotEmpty(entity.getCnumber()) && UtilFuns.isNotEmpty(entity.getPrice())){
+				amout = entity.getCnumber()* entity.getPrice();//附件新的总金额 
+				
+				entity.setAmount(amout);
+			}
+			
+			//更新购销合同的总金额
+			Contract contract = baseDao.get(Contract.class, entity.getContractProduct().getContract().getId());//找到购销合同
+			contract.setTotalAmount(contract.getTotalAmount()-oldprice+amout);
+			baseDao.saveOrUpdate(contract);
+		}
 		baseDao.saveOrUpdate(entity);
+		
 	}
 
 	@Override

@@ -152,7 +152,6 @@
 		</table>
 	</div>
 
-
 						</div>
 						<div class="textbox-bottom">
 							<div class="textbox-inner-bottom">

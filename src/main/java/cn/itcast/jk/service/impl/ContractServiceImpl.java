@@ -49,6 +49,7 @@ public class ContractServiceImpl implements ContractService {
 			//添加操作
 			entity.setState(0);//0代表草稿  1代表已提交 
 			entity.setCreateTime(new Date());
+			entity.setTotalAmount(0.0);
 		}
 		baseDao.saveOrUpdate(entity);
 	}

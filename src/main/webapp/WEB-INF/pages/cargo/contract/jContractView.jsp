@@ -32,7 +32,7 @@
 		<table class="commonTable" cellspacing="1">
 	         <tr>
 	            <td class="columnTitle">客户名称：</td>
-	            <td class="tableContent">${customerName }</td>
+	            <td class="tableContent">${customName }</td>
 	            <td class="columnTitle">打印版式：</td>
 	            <td class="tableContentAuto">
 	            	${printStyle=='2'?"两款":"一款" } 
@@ -110,30 +110,30 @@
 	<tbody class="tableBody" >
 	
 	<c:forEach items="${contractProducts}" var="cp" varStatus="status">
-	<tr bgcolor="#c3f3c3" height="30" class="odd" onmouseover="this.className='highlight'" onmouseout="this.className='odd'" >
-		<td>${status.index+1}</td>
-		<td>${cp.factoryName}</td>
-		<td>${cp.productNo}</td>
-		<td>${cp.loadingRate}</td>
-		<td>${cp.boxNum}</td>
-		<td>${cp.packingUnit}</td>
-		<td>${cp.cnumber}</td>
-		<td>${cp.price}</td>
-		<td>${cp.amount}</td>
-	</tr>
-	<c:forEach items="${cp.extCproducts}" var="ext" varStatus="status">
-	<tr height="30" class="odd" onmouseover="this.className='highlight'" onmouseout="this.className='odd'" >
-		<td align="right"><font color="blue">附件：${status.index+1}&nbsp;</font></td>
-		<td>${ext.factoryName}</td>
-		<td>${ext.productNo}</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>${ext.packingUnit}</td>
-		<td>${ext.cnumber}</td>
-		<td>${ext.price}</td>
-		<td>${ext.amount}</td>
-	</tr>
-	</c:forEach>
+			<tr bgcolor="#c3f3c3" height="30" class="odd" onmouseover="this.className='highlight'" onmouseout="this.className='odd'" >
+				<td>${status.index+1}</td>
+				<td>${cp.factoryName}</td>
+				<td>${cp.productNo}</td>
+				<td>${cp.loadingRate}</td>
+				<td>${cp.boxNum}</td>
+				<td>${cp.packingUnit}</td>
+				<td>${cp.cnumber}</td>
+				<td>${cp.price}</td>
+				<td>${cp.amount}</td>
+			</tr>
+			<c:forEach items="${cp.extCproducts}" var="ext" varStatus="status">
+			<tr height="30" class="odd" onmouseover="this.className='highlight'" onmouseout="this.className='odd'" >
+				<td align="right"><font color="blue">附件：${status.index+1}&nbsp;</font></td>
+				<td>${ext.factoryName}</td>
+				<td>${ext.productNo}</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>${ext.packingUnit}</td>
+				<td>${ext.cnumber}</td>
+				<td>${ext.price}</td>
+				<td>${ext.amount}</td>
+			</tr>
+			</c:forEach>
 	</c:forEach>
 	
 	</tbody>
