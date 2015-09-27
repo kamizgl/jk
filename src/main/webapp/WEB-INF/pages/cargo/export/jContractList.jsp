@@ -16,7 +16,7 @@
 <ul>
 <li id="view"><a href="#" onclick="formSubmit('${ctx}/cargo/contractAction_toview','_self');this.blur();">查看</a></li>
 <li id="print"><a href="#" onclick="formSubmit('${ctx}/cargo/contractAction_print','_self');this.blur();">打印</a></li>
-<li id="new"><a href="#" onclick="formSubmit('${ctx}/cargo/exportAction_insert','_self');this.blur();">报运</a></li>
+<li id="new"><a href="#" onclick="formSubmit('${ctx}/cargo/exportAction_tocreate','_self');this.blur();">报运</a></li>
 </ul>
   </div>
 </div>

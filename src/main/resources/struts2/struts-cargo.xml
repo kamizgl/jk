@@ -35,7 +35,7 @@
 			<result name="toedit">/WEB-INF/pages/cargo/outproduct/jOutProduct.jsp</result>
 		</action>
 		
-<!--		<action name="exportAction_list" class="outProductAction" method="list">
+<!--	<action name="exportAction_list" class="outProductAction" method="list">
 			<result name="success">/WEB-INF/pages/cargo/outproduct/jOutProduct.jsp</result>
 		</action> -->
 		

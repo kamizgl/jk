@@ -55,4 +55,8 @@
 		<property name="contractService" ref="contractService"></property>
 		<property name="exportService" ref="exportService"></property>
 	</bean>
+	
+	<bean id="statChartAction" class="cn.itcast.jk.action.StatChartAction">
+		<property name="sqlDao" ref="sqlDao"></property>
+	</bean>
 </beans>

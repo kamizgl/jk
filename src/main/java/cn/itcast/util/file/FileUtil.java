@@ -382,7 +382,7 @@ public class FileUtil {
   	}
   	
 	try {
-		OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(sPath + "\\" + sFile), enCoding);
+		OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(sPath + File.separatorChar + sFile), enCoding);
 	    out.write(sContent);
 	    out.flush();
 	    out.close();

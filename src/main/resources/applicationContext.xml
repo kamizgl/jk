@@ -59,6 +59,15 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>	
 	
+	<!--引入另一条脚   使用SQL直接操作数据库，主要用于统计查询-->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<bean id="sqlDao" class="cn.itcast.common.springdao.SqlDao">
+		<property name="jdbcTemplate" ref="jdbcTemplate"></property>
+	</bean>
+	
 	
 	<!--引入其它spring配置文件-->
 	<import resource="spring/applicationContext-action.xml"></import>			

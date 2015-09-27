@@ -35,11 +35,9 @@
 			<result name="tomodule">/WEB-INF/pages/sysadmin/role/jRoleModule.jsp</result>
 			<result name="alist" type="redirectAction">roleAction_list</result>
 		</action>
-		
 	</package>
-	
-	
+		
 	<include file="struts2/struts-sysadmin.xml"></include>
 	<include file="struts2/struts-cargo.xml"></include>
-	
+	<include file="struts2/struts-stat.xml"></include> 
 </struts>
